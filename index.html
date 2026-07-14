@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilinova · e‑com atelier</title>
+  <!-- Font & base (distinct from regular shops) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f4f1ea;  /* warmer, paper-like background */
+      color: #1e1b17;
+      line-height: 1.4;
+    }
+
+    .site-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      background: #f4f1ea;
+    }
+
+    /* ----- navbar (only home,about,disclaimer,privacy,terms) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0 18px 0;
+      border-bottom: 1px solid #d4cdc0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #1e1b17;
+      border-right: 2px solid #b9aea0;
+      padding-right: 26px;
+    }
+    .logo span { font-weight: 300; color: #6a5f54; }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      margin-left: auto;
+      font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c2721;
+      font-size: 1.02rem;
+      letter-spacing: 0.3px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover { border-bottom-color: #a28f7c; }
+
+    /* ----- mini cart / e‑com hint (no extra pages, just UI) ----- */
+    .bag-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #e3dbd0;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 450;
+      letter-spacing: 0.2px;
+      margin-left: 30px;
+      border: 1px solid #cdc0b2;
+    }
+    .bag-icon span { background: #1e1b17; color: #f0e8dd; border-radius: 20px; padding: 2px 10px; }
+
+    /* ----- hero section — now product/showcase oriented (e‑com look) ----- */
+    .hero-product {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 50px 0 70px 0;
+      align-items: center;
+    }
+
+    .hero-product-left {
+      padding-right: 20px;
+    }
+    .hero-product-left .pre-line {
+      font-size: 1rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #7b6e60;
+      margin-bottom: 15px;
+    }
+    .hero-product-left h1 {
+      font-size: 3.8rem;
+      font-weight: 430;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      color: #1e1b17;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+    .hero-product-left h1 small {
+      font-size: 1.8rem;
+      font-weight: 300;
+      display: block;
+      letter-spacing: -0.2px;
+      color: #5b5148;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #3d372f;
+      margin: 25px 0 30px 0;
+      max-width: 450px;
+    }
+    .price-tag {
+      font-size: 2rem;
+      font-weight: 350;
+      border-bottom: 2px solid #c6b7a8;
+      display: inline-block;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #1e1b17;
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      font-size: 1.2rem;
+      border-radius: 40px;
+      font-weight: 400;
+      cursor: default;  /* static demo */
+      box-shadow: 5px 5px 0 #bfb3a6;
+      transition: 0.1s;
+      border: 1px solid #353025;
+    }
+    .btn-outline {
+      background: transparent;
+      color: #1e1b17;
+      box-shadow: 5px 5px 0 #d2c6b8;
+      border: 1px solid #b8ab9b;
+    }
+
+    .hero-product-right {
+      background: #dad1c5;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 20px 20px 0 #cbbeb0;
+      height: 500px;
+    }
+    .hero-product-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ----- featured products (real unsplash fashion) ----- */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 420;
+      letter-spacing: -1px;
+      margin: 30px 0 40px 0;
+      border-left: 6px solid #baac9b;
+      padding-left: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+      margin-bottom: 70px;
+    }
+
+    .product-card {
+      background: #ffffffd9;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #ddd3c7;
+      backdrop-filter: blur(2px);
+      transition: 0.15s;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+
+    .product-image {
+      height: 340px;
+      background-color: #cfc6ba;
+      overflow: hidden;
+    }
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .product-card:hover img { transform: scale(1.02); }
+
+    .product-info {
+      padding: 24px 20px 25px;
+    }
+    .product-category {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #8a7b6b;
+    }
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 440;
+      margin: 6px 0 8px 0;
+      letter-spacing: -0.3px;
+    }
+    .product-price {
+      font-size: 1.4rem;
+      font-weight: 350;
+      color: #4d4238;
+      margin-bottom: 20px;
+    }
+    .add-to-cart {
+      background: transparent;
+      border: 1.5px solid #1e1b17;
+      color: #1e1b17;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-size: 1rem;
+      width: 100%;
+      font-weight: 450;
+      cursor: default;
+      transition: 0.1s;
+      text-align: center;
+      display: inline-block;
+    }
+
+    /* ---- disclaimer, privacy, terms cards (exactly as navbar, but now with e‑com context) ---- */
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 50px 0 30px;
+    }
+    .info-card {
+      background: #e7dfd4;
+      padding: 32px 28px;
+      border-radius: 30px;
+      border: 1px solid #d2c5b6;
+    }
+    .info-card h3 {
+      font-size: 1.6rem;
+      font-weight: 440;
+      border-bottom: 2px solid #c1b2a1;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .info-card p, .info-card small {
+      color: #36302a;
+      line-height: 1.6;
+    }
+    .info-card small { display: block; margin-top: 12px; opacity: 0.75; }
+
+    /* ----- footer (same menu) ----- */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 45px 0;
+      border-top: 1px solid #cfc4b7;
+      margin-top: 30px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 42px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #332e27;
+      font-size: 1rem;
+      border-bottom: 1px dotted #9e9080;
+    }
+    .footer-links a:hover { border-bottom: 1px solid #332e27; }
+    .footer-copy {
+      color: #695e52;
+      font-size: 0.95rem;
+    }
+
+    /* responsive */
+    @media (max-width: 1000px) {
+      .hero-product { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .site-wrapper { padding: 0 20px; }
+      .navbar { flex-direction: column; align-items: start; }
+      .nav-links { margin-left: 0; flex-wrap: wrap; gap: 20px; }
+      .bag-icon { margin-left: 0; margin-top: 10px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .info-row { grid-template-columns: 1fr; }
+      .footer { flex-direction: column-reverse; align-items: start; gap: 16px; }
+    }
+  </style>
+
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NTV0NLN2X5');
+</script>
+
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navigation: exactly Home, About, Disclaimer, Privacy, Terms (e‑com feel with bag icon) -->
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Bilinova</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        </div>
+        <!-- subtle e‑com basket (no extra page, just ui) -->
+        <div class="bag-icon">
+          👜 bag <span>3</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero section — now clearly e‑commerce: product spotlight + real image + add to bag -->
+    <section class="hero-product">
+      <div class="hero-product-left">
+        <div class="pre-line">limited edition</div>
+        <h1>canvas <small>asymmetric drape</small></h1>
+        <div class="price-tag">$219 — $289</div>
+        <p class="hero-desc">Raw‑hem oversized shirt in pure Japanese cotton. Garment‑dyed, stone washed — each piece slightly unique.</p>
+        <div class="hero-actions">
+          <button class="btn">add to bag</button>
+          <button class="btn btn-outline">size guide</button>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.95rem; color: #665b50;">⚡ available in 4 colours / real‑life fit</p>
+      </div>
+      <div class="hero-product-right">
+        <!-- real fashion image (unsplash) – e‑com style -->
+        <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=900&auto=format&fit=crop&q=85" alt="model wearing relaxed beige outfit, fashion ecommerce style" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Featured products (real images, product-like) -->
+    <h2 class="section-title">new / denim series</h2>
+    <div class="product-grid">
+      <!-- card 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=80" alt="red sneakers detail" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-category">footwear</div>
+          <div class="product-name">crimson retro</div>
+          <div class="product-price">$149</div>
+          <span class="add-to-cart">+ quick add</span>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1644084947934-9a8a769e8c87?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="grey oversized hoodie" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-category">knitwear</div>
+          <div class="product-name">heavy fleece</div>
+          <div class="product-price">$198</div>
+          <span class="add-to-cart">+ quick add</span>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&auto=format&fit=crop&q=80" alt="leather shoulder bag" loading="lazy">
+        </div>
+        <div class="product-info">
+          <div class="product-category">accessories</div>
+          <div class="product-name">weekender tote</div>
+          <div class="product-price">$279</div>
+          <span class="add-to-cart">+ quick add</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- informational panels (About, Disclaimer, Privacy, Terms) exactly as navbar — and now with e‑com friendly text -->
+    <div class="info-row">
+      <!-- About card -->
+      <div class="info-card">
+        <h3>About</h3>
+        <p>Bilinova is a digital atelier for raw, timeless fashion. We work directly with small workshops in Portugal and Japan. Each garment is made to order — reducing waste.</p>
+        <small>est. 2025 · slow fashion</small>
+      </div>
+      <!-- Disclaimer card -->
+      <div class="info-card">
+        <h3>Disclaimer</h3>
+        <p>All products shown are real and in stock. Sizing charts are provided as guidance. Colour may vary slightly due to natural dyes.</p>
+        <p style="margin-top: 12px;">⚡ For exact availability, please check size tab.</p>
+      </div>
+      <!-- combined Privacy & Terms (both in one card, clearly separated) -->
+      <div class="info-card">
+        <h3>Privacy & Terms</h3>
+        <p><strong style="font-weight: 500;">Privacy</strong> — we never store payment data. Checkout via encrypted partners.</p>
+        <p style="margin-top: 14px;"><strong style="font-weight: 500;">Terms</strong> — free returns within 30 days. All orders insured.</p>
+      </div>
+    </div>
+
+    <!-- extra subtle e‑com element (shipping banner) but without extra menu -->
+    <div style="background: #e2d8cd; border-radius: 60px; padding: 18px 28px; margin: 30px 0 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
+      <span>🚚 free shipping on orders over $250</span>
+      <span>⭐ 30‑day returns · trackable</span>
+      <span>💳 pay later with klarna</span>
+    </div>
+
+    <!-- Footer with exactly home, about, disclaimer, privacy, terms -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">
+        © Bilinova — e‑com atelier
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

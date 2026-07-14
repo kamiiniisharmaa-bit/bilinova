@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilinova · privacy</title>
+  <!-- Font & base (consistent, calm, privacy-page appropriate) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f6f3ed;  /* soft neutral background */
+      color: #1e1b17;
+      line-height: 1.5;
+    }
+
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+      background: #f6f3ed;
+    }
+
+    /* ----- navigation (exactly home, about, disclaimer, privacy, terms) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 20px 0;
+      border-bottom: 1px solid #dbd1c5;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #1e1b17;
+      border-right: 2px solid #c4b8a9;
+      padding-right: 26px;
+    }
+    .logo span { font-weight: 300; color: #6f6458; }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      margin-left: auto;
+      font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2822;
+      font-size: 1.02rem;
+      letter-spacing: 0.3px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover { border-bottom-color: #a28f7c; }
+    .nav-links a.active { border-bottom-color: #8f7b66; font-weight: 450; }
+
+    /* ----- page header (privacy) ----- */
+    .page-header {
+      margin: 50px 0 30px 0;
+    }
+    .page-header h1 {
+      font-size: 3.8rem;
+      font-weight: 420;
+      letter-spacing: -2px;
+      color: #1a1612;
+      border-left: 6px solid #c0b09e;
+      padding-left: 30px;
+    }
+    .page-header .sub {
+      font-size: 1.15rem;
+      color: #5b5248;
+      margin-top: 12px;
+      padding-left: 36px;
+    }
+
+    /* ----- main privacy grid (clean, card-based) ----- */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 40px 0 50px;
+    }
+
+    .privacy-card {
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 36px 32px;
+      border: 1px solid #e1d6c9;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+
+    .privacy-card.full-width {
+      grid-column: span 2;
+    }
+
+    .privacy-card h2 {
+      font-size: 2rem;
+      font-weight: 450;
+      letter-spacing: -0.8px;
+      border-bottom: 2px solid #d4c7b8;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .privacy-card h2 span {
+      font-size: 1.8rem;
+      opacity: 0.7;
+    }
+
+    .privacy-card p {
+      color: #35302a;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .privacy-card ul {
+      margin: 20px 0 10px 25px;
+      color: #3b352f;
+    }
+    .privacy-card li {
+      margin-bottom: 12px;
+      font-size: 1.02rem;
+    }
+
+    .highlight-box {
+      background: #ede7df;
+      border-radius: 20px;
+      padding: 22px 26px;
+      border: 1px solid #cdbfb0;
+      margin-top: 25px;
+    }
+
+    /* ----- visual banner (real photo, soft privacy/secure vibe) ----- */
+    .visual-banner {
+      margin: 40px 0 30px;
+      border-radius: 40px;
+      overflow: hidden;
+      max-height: 260px;
+      box-shadow: 14px 14px 0 #c9bbab;
+    }
+    .visual-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ----- footer (same menu) ----- */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 45px 0;
+      border-top: 1px solid #d2c7ba;
+      margin-top: 40px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 42px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #342e27;
+      font-size: 1rem;
+      border-bottom: 1px dotted #a79888;
+    }
+    .footer-links a:hover { border-bottom: 1px solid #342e27; }
+    .footer-copy {
+      color: #6b6054;
+      font-size: 0.95rem;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .privacy-grid { grid-template-columns: 1fr; }
+      .privacy-card.full-width { grid-column: span 1; }
+      .page-header h1 { font-size: 3rem; }
+    }
+    @media (max-width: 650px) {
+      .site-wrapper { padding: 0 20px; }
+      .navbar { flex-direction: column; align-items: start; }
+      .nav-links { margin-left: 0; flex-wrap: wrap; gap: 24px; }
+      .footer { flex-direction: column-reverse; align-items: start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navbar: Home, About, Disclaimer, Privacy (active), Terms -->
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Bilinova</a>
+        <div class="nav-links">
+             <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page title -->
+    <div class="page-header">
+      <h1>privacy</h1>
+      <div class="sub">how we handle your data — minimal, transparent, never sold</div>
+    </div>
+
+    <!-- real image banner (subtle, secure & textile mood) -->
+    <div class="visual-banner">
+      <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&auto=format&fit=crop&q=85" alt="soft fabric with lock and key concept" loading="lazy">
+    </div>
+
+    <!-- Main privacy content (grid) -->
+    <div class="privacy-grid">
+      <!-- Card 1: information collection -->
+      <div class="privacy-card">
+        <h2><span>⸻</span> info we collect</h2>
+        <p>Bilinova collects minimal data. When you browse, we may store:</p>
+        <ul>
+          <li>🖥️ <strong>Anonymous usage stats</strong> (pages visited, referrer) – via privacy-friendly analytics.</li>
+          <li>📧 <strong>Email address</strong> only if you contact us directly or sign up for very rare updates.</li>
+          <li>🍪 <strong>Essential cookies</strong> (no tracking, just session integrity).</li>
+        </ul>
+        <div class="highlight-box">
+          🔒 we never collect payment details — all transactions are handled by secure external partners.
+        </div>
+      </div>
+
+      <!-- Card 2: how we use information -->
+      <div class="privacy-card">
+        <h2><span>⸻</span> how we use</h2>
+        <p>Your data is used only to:</p>
+        <ul>
+          <li>✔️ improve site experience (aggregated analytics)</li>
+          <li>✔️ reply to your messages (if you contact us)</li>
+          <li>✔️ send order updates if you purchase (via third‑party shop)</li>
+        </ul>
+        <p style="margin-top: 20px;">We do <strong>not</strong> sell, rent, or trade your personal information. Period.</p>
+      </div>
+
+      <!-- Card 3: cookies (full width) -->
+      <div class="privacy-card full-width">
+        <h2><span>⸻</span> cookies & tracking</h2>
+        <p>This website uses only strictly necessary cookies (e.g., to maintain session state). We do not use marketing cookies, fingerprinting, or persistent trackers. The optional analytics tool is configured to anonymize your IP address.</p>
+        <ul>
+          <li>🍪 _session (expires when you close browser)</li>
+          <li>📊 aggregated analytics (opt‑out via browser settings)</li>
+        </ul>
+        <p>You can disable cookies in your browser, but some site features may not work properly.</p>
+      </div>
+
+      <!-- Card 4: third parties -->
+      <div class="privacy-card">
+        <h2><span>⸻</span> third parties</h2>
+        <p>We may use trusted partners for:</p>
+        <ul>
+          <li>📦 E‑commerce platform (Shopify / etc) – they process payments & shipping.</li>
+          <li>📈 Simple analytics (Plausible / Fathom) – no personal data stored.</li>
+        </ul>
+        <p>Each partner complies with GDPR and similar regulations. Bilinova selects only privacy‑focused services.</p>
+      </div>
+
+      <!-- Card 5: your rights -->
+      <div class="privacy-card">
+        <h2><span>⸻</span> your rights</h2>
+        <p>If you are in the EU/UK, you have the right to:</p>
+        <ul>
+          <li>🔍 request access to your data</li>
+          <li>✏️ correct inaccuracies</li>
+          <li>🧹 request deletion (right to be forgotten)</li>
+        </ul>
+        <p>Email <strong>privacy@Bilinova.demo</strong> – we respond within 30 days.</p>
+      </div>
+
+      <!-- Card 6: data retention & security (full width) -->
+      <div class="privacy-card full-width">
+        <h2><span>⸻</span> retention & security</h2>
+        <p>Logs are kept for 30 days then anonymized. Contact form inquiries are deleted after 6 months. We implement reasonable technical measures to protect your data, though no transmission over the internet is 100% secure.</p>
+        <div style="background: #ded3c6; border-radius: 40px; padding: 15px 25px; margin-top: 15px;">
+          🔐 last updated: 28 february 2026 · if we change this policy, we’ll notify on the website.
+        </div>
+      </div>
+    </div>
+
+    <!-- subtle spacer -->
+    <div style="height: 2px; background: linear-gradient(90deg, #cdc0b2, transparent); margin: 20px 0;"></div>
+
+    <!-- Footer with exactly home, about, disclaimer, privacy, terms -->
+    <footer class="footer">
+      <div class="footer-links">
+           <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">
+        © Bilinova — privacy first
+      </div>
+    </footer>
+  </div>
+  <!-- real image used: unsplash / fabric with lock motif -->
+</body>
+</html>

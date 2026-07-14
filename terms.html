@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilinova · terms of service</title>
+  <!-- Font & base (consistent, clean, terms-page appropriate) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f7f4ee;  /* soft, warm background */
+      color: #1e1b17;
+      line-height: 1.5;
+    }
+
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+      background: #f7f4ee;
+    }
+
+    /* ----- navigation (exactly home, about, disclaimer, privacy, terms) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 20px 0;
+      border-bottom: 1px solid #dbd1c5;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #1e1b17;
+      border-right: 2px solid #c4b8a9;
+      padding-right: 26px;
+    }
+    .logo span { font-weight: 300; color: #6f6458; }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      margin-left: auto;
+      font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2822;
+      font-size: 1.02rem;
+      letter-spacing: 0.3px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover { border-bottom-color: #a28f7c; }
+    .nav-links a.active { border-bottom-color: #8f7b66; font-weight: 450; }
+
+    /* ----- page header (terms) ----- */
+    .page-header {
+      margin: 50px 0 30px 0;
+    }
+    .page-header h1 {
+      font-size: 3.8rem;
+      font-weight: 420;
+      letter-spacing: -2px;
+      color: #1a1612;
+      border-left: 6px solid #c0b09e;
+      padding-left: 30px;
+    }
+    .page-header .sub {
+      font-size: 1.15rem;
+      color: #5b5248;
+      margin-top: 12px;
+      padding-left: 36px;
+    }
+
+    /* ----- main terms grid (clean, card-based) ----- */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 40px 0 50px;
+    }
+
+    .terms-card {
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 36px 32px;
+      border: 1px solid #e1d6c9;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+
+    .terms-card.full-width {
+      grid-column: span 2;
+    }
+
+    .terms-card h2 {
+      font-size: 2rem;
+      font-weight: 450;
+      letter-spacing: -0.8px;
+      border-bottom: 2px solid #d4c7b8;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terms-card h2 span {
+      font-size: 1.8rem;
+      opacity: 0.7;
+    }
+
+    .terms-card p {
+      color: #35302a;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .terms-card ul, .terms-card ol {
+      margin: 20px 0 10px 25px;
+      color: #3b352f;
+    }
+    .terms-card li {
+      margin-bottom: 12px;
+      font-size: 1.02rem;
+    }
+
+    .highlight-box {
+      background: #ede7df;
+      border-radius: 20px;
+      padding: 22px 26px;
+      border: 1px solid #cdbfb0;
+      margin-top: 25px;
+    }
+
+    /* ----- visual banner (real photo, subtle terms / contract vibe) ----- */
+    .visual-banner {
+      margin: 40px 0 30px;
+      border-radius: 40px;
+      overflow: hidden;
+      max-height: 260px;
+      box-shadow: 14px 14px 0 #c9bbab;
+    }
+    .visual-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ----- footer (same menu) ----- */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 45px 0;
+      border-top: 1px solid #d2c7ba;
+      margin-top: 40px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 42px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #342e27;
+      font-size: 1rem;
+      border-bottom: 1px dotted #a79888;
+    }
+    .footer-links a:hover { border-bottom: 1px solid #342e27; }
+    .footer-copy {
+      color: #6b6054;
+      font-size: 0.95rem;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .terms-grid { grid-template-columns: 1fr; }
+      .terms-card.full-width { grid-column: span 1; }
+      .page-header h1 { font-size: 3rem; }
+    }
+    @media (max-width: 650px) {
+      .site-wrapper { padding: 0 20px; }
+      .navbar { flex-direction: column; align-items: start; }
+      .nav-links { margin-left: 0; flex-wrap: wrap; gap: 24px; }
+      .footer { flex-direction: column-reverse; align-items: start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navbar: Home, About, Disclaimer, Privacy, Terms (active) -->
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Bilinova</a>
+        <div class="nav-links">
+         <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page title -->
+    <div class="page-header">
+      <h1>terms of service</h1>
+      <div class="sub">your agreement with Bilinova — please read carefully</div>
+    </div>
+
+    <!-- real image banner (subtle, fabric & contract mood) -->
+    <div class="visual-banner">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&auto=format&fit=crop&q=85" alt="neutral office with fabric and document" loading="lazy">
+    </div>
+
+    <!-- Main terms content (grid) -->
+    <div class="terms-grid">
+      <!-- Card 1: acceptance of terms -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 1. acceptance</h2>
+        <p>By accessing or using the Bilinova website, you agree to be bound by these Terms of Service and all applicable laws. If you do not agree, please do not use the site.</p>
+        <p>We may update these terms from time to time; continued use constitutes acceptance of the revised version.</p>
+      </div>
+
+      <!-- Card 2: eligibility & account -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 2. eligibility</h2>
+        <p>You must be at least 18 years old to make a purchase. By placing an order, you represent that you are legally capable of entering into binding contracts.</p>
+        <p>If you create an account, you are responsible for maintaining confidentiality.</p>
+      </div>
+
+      <!-- Card 3: orders & pricing (full width) -->
+      <div class="terms-card full-width">
+        <h2><span>⸻</span> 3. orders & pricing</h2>
+        <p>All orders are subject to availability and confirmation of the order price. We strive to display accurate product information, but errors may occur. Bilinova reserves the right to cancel any order due to inaccuracies or stock unavailability.</p>
+        <ul>
+          <li>💰 Prices are in USD and exclude taxes/shipping (calculated at checkout).</li>
+          <li>📦 Risk of loss passes to you upon delivery.</li>
+          <li>🔄 Returns are accepted within 30 days, subject to our return policy (see section 6).</li>
+        </ul>
+        <div class="highlight-box">
+          ⚡ we do not price-match after purchase.
+        </div>
+      </div>
+
+      <!-- Card 4: payment -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 4. payment</h2>
+        <p>We use trusted third‑party payment processors. Bilinova does not store your credit card details. By providing payment information, you represent that you are authorized to use the payment method.</p>
+        <p>If a transaction is declined, we may cancel the order.</p>
+      </div>
+
+      <!-- Card 5: intellectual property -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 5. IP rights</h2>
+        <p>All content on this site (text, images, logos, designs) is the property of Bilinova or its licensors and is protected by copyright laws. You may not reproduce, distribute, or commercially exploit any content without written permission.</p>
+        <p>Images sourced from Unsplash remain under their respective licenses.</p>
+      </div>
+
+      <!-- Card 6: shipping & returns (full width) -->
+      <div class="terms-card full-width">
+        <h2><span>⸻</span> 6. shipping & returns</h2>
+        <p>We ship to most countries. Delivery times are estimates only. You are responsible for any customs duties or taxes. Returns must be initiated within 30 days of delivery, with items unworn and in original packaging. Return shipping costs are borne by the customer unless the item is defective.</p>
+        <ul>
+          <li>📬 defective items: full refund including shipping.</li>
+          <li>🔄 exchanges: processed as return + new order.</li>
+        </ul>
+      </div>
+
+      <!-- Card 7: limitation of liability -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 7. liability</h2>
+        <p>Bilinova shall not be liable for any indirect, incidental, or consequential damages arising from the use of this site or products purchased. Our total liability is limited to the amount you paid for the product in question.</p>
+      </div>
+
+      <!-- Card 8: governing law -->
+      <div class="terms-card">
+        <h2><span>⸻</span> 8. governing law</h2>
+        <p>These Terms are governed by the laws of England and Wales, without regard to conflict of law principles. Any disputes shall be resolved in the courts of London, UK.</p>
+      </div>
+
+      <!-- Card 9: contact & final (full width) -->
+      <div class="terms-card full-width">
+        <h2><span>⸻</span> 9. contact</h2>
+        <p>For any questions regarding these Terms, please reach out:</p>
+        <div style="background: #ded3c6; border-radius: 40px; padding: 15px 25px; margin: 15px 0;">
+          📧 legal@Bilinova.demo · 📍 Bilinova, 71-75 Shelton Street, London WC2H 9JQ
+        </div>
+        <p><em>Last updated: 28 February 2026</em></p>
+      </div>
+    </div>
+
+    <!-- subtle spacer -->
+    <div style="height: 2px; background: linear-gradient(90deg, #cdc0b2, transparent); margin: 20px 0;"></div>
+
+    <!-- Footer with exactly home, about, disclaimer, privacy, terms -->
+    <footer class="footer">
+      <div class="footer-links">
+         <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">
+        © Bilinova — terms of service
+      </div>
+    </footer>
+  </div>
+  <!-- real image used: unsplash / calm workspace with documents -->
+</body>
+</html>

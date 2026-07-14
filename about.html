@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilinova · about</title>
+  <!-- Font & base (consistent with previous e‑com aesthetic but refined for about) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f4efe8;  /* warm, paper-like background */
+      color: #1f1c18;
+      line-height: 1.5;
+    }
+
+    .site-wrapper {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 40px;
+      background: #f4efe8;
+    }
+
+    /* ----- simple navigation (only about is active, but links stay as requested) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 20px 0;
+      border-bottom: 1px solid #d9d0c4;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #1f1c18;
+      border-right: 2px solid #c2b6a7;
+      padding-right: 26px;
+    }
+    .logo span { font-weight: 300; color: #6f6458; }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      margin-left: auto;
+      font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2822;
+      font-size: 1.02rem;
+      letter-spacing: 0.3px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover { border-bottom-color: #a28f7c; }
+    .nav-links a.active { border-bottom-color: #8f7b66; font-weight: 450; }
+
+    /* ----- about hero (story header) ----- */
+    .about-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 60px 0 70px 0;
+      align-items: center;
+    }
+
+    .about-hero-left h1 {
+      font-size: 4.2rem;
+      font-weight: 420;
+      letter-spacing: -2.2px;
+      line-height: 1.05;
+      color: #1a1612;
+    }
+    .about-hero-left h1 small {
+      font-size: 1.8rem;
+      font-weight: 320;
+      display: block;
+      color: #6e6256;
+      letter-spacing: -0.2px;
+      margin-top: 10px;
+    }
+    .about-hero-left .tagline {
+      font-size: 1.3rem;
+      font-weight: 340;
+      color: #50473e;
+      margin: 30px 0 20px;
+      border-left: 4px solid #b7a696;
+      padding-left: 24px;
+    }
+    .about-hero-left p {
+      color: #3d3832;
+      max-width: 450px;
+      font-size: 1.05rem;
+    }
+
+    .about-hero-right {
+      background: #dad0c2;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 18px 18px 0 #c3b5a4;
+      height: 460px;
+    }
+    .about-hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ----- story grid (real images + manifesto) ----- */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 80px 0 60px;
+    }
+    .story-card {
+      background: #ffffffd4;
+      border-radius: 28px;
+      padding: 30px 24px 36px 24px;
+      border: 1px solid #e2d6c9;
+      backdrop-filter: blur(2px);
+    }
+    .story-card h2 {
+      font-weight: 450;
+      font-size: 2rem;
+      letter-spacing: -0.8px;
+      border-bottom: 2px solid #d1c3b4;
+      padding-bottom: 15px;
+      margin-bottom: 22px;
+    }
+    .story-card p {
+      color: #3a332c;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .story-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-top: 12px;
+      box-shadow: 0 8px 18px -6px #b7aa9b;
+    }
+
+    /* ----- process / team (more real images) ----- */
+    .process-section {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      margin: 70px 0 60px;
+      background: #e9e1d6;
+      border-radius: 50px;
+      padding: 50px 48px;
+      border: 1px solid #d2c5b5;
+    }
+    .process-left img {
+      width: 100%;
+      height: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 12px 12px 0 #b1a18f;
+    }
+    .process-right h3 {
+      font-size: 2.4rem;
+      font-weight: 430;
+      letter-spacing: -1px;
+      margin-bottom: 25px;
+    }
+    .process-right p {
+      font-size: 1.1rem;
+      color: #302b25;
+      margin-bottom: 22px;
+    }
+    .signature {
+      font-family: 'Times New Roman', serif;
+      font-size: 1.8rem;
+      opacity: 0.7;
+      margin-top: 25px;
+    }
+
+    /* ----- footer (exactly same menu) ----- */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 45px 0;
+      border-top: 1px solid #d1c6b8;
+      margin-top: 40px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 42px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #342e27;
+      font-size: 1rem;
+      border-bottom: 1px dotted #a59686;
+    }
+    .footer-links a:hover { border-bottom: 1px solid #342e27; }
+    .footer-copy {
+      color: #6b6054;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-hero { grid-template-columns: 1fr; }
+      .story-grid { grid-template-columns: 1fr 1fr; }
+      .process-section { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 650px) {
+      .site-wrapper { padding: 0 20px; }
+      .navbar { flex-direction: column; align-items: start; }
+      .nav-links { margin-left: 0; flex-wrap: wrap; gap: 24px; }
+      .story-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column-reverse; align-items: start; gap: 16px; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NTV0NLN2X5');
+</script>
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navbar: Home, About (active), Disclaimer, Privacy, Terms — exactly requested -->
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Bilinova</a>
+        <div class="nav-links">
+         <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- About page hero (distinct from homepage) -->
+    <section class="about-hero">
+      <div class="about-hero-left">
+        <h1>about Bilinova <small>raw. honest. considered.</small></h1>
+        <div class="tagline">We don’t follow seasons — we follow texture, drape, and longevity.</div>
+        <p>Founded in 2025 between London and a small weaving atelier in northern Portugal. Bilinova exists outside the fast‑fashion cycle. Every piece is made in limited runs, using deadstock or responsibly sourced fabrics.</p>
+      </div>
+      <div class="about-hero-right">
+        <!-- real image: studio/atelier feel -->
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=900&auto=format&fit=crop&q=85" alt="fashion studio with garments on rail, natural light" loading="lazy">
+      </div>
+    </section>
+
+    <!-- three pillars with real photography (craft, community, design) -->
+    <div class="story-grid">
+      <div class="story-card">
+        <h2>craft</h2>
+        <p>Each pattern is cut by hand in our Lisbon studio. We work with sewers who have been in the trade for over twenty years — no mass production.</p>
+        <img src="https://images.unsplash.com/photo-1557772611-38b8b48c7b5e?w=800&auto=format&fit=crop&q=80" alt="hands sewing fabric, close up" loading="lazy">
+      </div>
+      <div class="story-card">
+        <h2>community</h2>
+        <p>Bilinova is shaped by a slow community of wearers and makers. We host fitting events and fabric swaps — physical, not virtual.</p>
+        <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?w=800&auto=format&fit=crop&q=80" alt="group of people in workshop" loading="lazy">
+      </div>
+      <div class="story-card">
+        <h2>design</h2>
+        <p>Unconstructed silhouettes, raw edges, and minimal hardware. Our pieces age — they aren’t meant to stay “perfect”.</p>
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&auto=format&fit=crop&q=80" alt="flowing fabric and minimalist design" loading="lazy">
+      </div>
+    </div>
+
+    <!-- process / team block (real image + story) -->
+    <div class="process-section">
+      <div class="process-left">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&auto=format&fit=crop&q=85" alt="two people reviewing textiles in atelier" loading="lazy">
+      </div>
+      <div class="process-right">
+        <h3>slow creation</h3>
+        <p>We travel twice a year to meet our weavers and dyers. No moodboards — we react to what they have in stock, often deadstock fabrics that would otherwise go to landfill. That’s why each collection is small and unrepeatable.</p>
+        <p>Bilinova is not a brand; it’s a rotating archive of garments that respect the hands that made them.</p>
+        <div class="signature">— Bilinova studio</div>
+      </div>
+    </div>
+
+    <!-- subtle reminder of other pages (disclaimer/privacy/terms) not needed but footer covers it -->
+    <div style="margin: 30px 0 10px; padding: 8px 0; font-style: italic; color: #6b6258; border-top: 1px dashed #cdc0b2; text-align: right;">
+      * read our disclaimer & privacy below
+    </div>
+
+    <!-- Footer: Home, About, Disclaimer, Privacy, Terms exactly -->
+    <footer class="footer">
+      <div class="footer-links">
+      <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">
+        © Bilinova — about the atelier
+      </div>
+    </footer>
+  </div>
+  <!-- all images are real, sourced from unsplash (fashion/textile/studio) -->
+</body>
+</html>

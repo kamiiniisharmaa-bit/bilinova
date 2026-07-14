@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilinova · disclaimer</title>
+  <!-- Font & base (consistent, calm, legal-page appropriate) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f5f2eb;  /* warm off-white */
+      color: #1e1b17;
+      line-height: 1.5;
+    }
+
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px;
+      background: #f5f2eb;
+    }
+
+    /* ----- navigation (exactly home, about, disclaimer, privacy, terms) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 20px 0;
+      border-bottom: 1px solid #dbd1c5;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -1px;
+      text-decoration: none;
+      color: #1e1b17;
+      border-right: 2px solid #c4b8a9;
+      padding-right: 26px;
+    }
+    .logo span { font-weight: 300; color: #6f6458; }
+
+    .nav-links {
+      display: flex;
+      gap: 42px;
+      margin-left: auto;
+      font-weight: 400;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2822;
+      font-size: 1.02rem;
+      letter-spacing: 0.3px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .nav-links a:hover { border-bottom-color: #a28f7c; }
+    .nav-links a.active { border-bottom-color: #8f7b66; font-weight: 450; }
+
+    /* ----- page header (disclaimer) ----- */
+    .page-header {
+      margin: 50px 0 30px 0;
+    }
+    .page-header h1 {
+      font-size: 3.8rem;
+      font-weight: 420;
+      letter-spacing: -2px;
+      color: #1a1612;
+      border-left: 6px solid #c0b09e;
+      padding-left: 30px;
+    }
+    .page-header .sub {
+      font-size: 1.15rem;
+      color: #5b5248;
+      margin-top: 12px;
+      padding-left: 36px;
+    }
+
+    /* ----- main disclaimer grid (formal but clear) ----- */
+    .disclaimer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin: 40px 0 50px;
+    }
+
+    .disclaimer-card {
+      background: #ffffffd9;
+      border-radius: 28px;
+      padding: 36px 32px;
+      border: 1px solid #e1d6c9;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+    }
+
+    .disclaimer-card.full-width {
+      grid-column: span 2;
+    }
+
+    .disclaimer-card h2 {
+      font-size: 2rem;
+      font-weight: 450;
+      letter-spacing: -0.8px;
+      border-bottom: 2px solid #d4c7b8;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .disclaimer-card h2 span {
+      font-size: 1.8rem;
+      opacity: 0.7;
+    }
+
+    .disclaimer-card p {
+      color: #35302a;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .disclaimer-card ul {
+      margin: 20px 0 10px 25px;
+      color: #3b352f;
+    }
+    .disclaimer-card li {
+      margin-bottom: 12px;
+      font-size: 1.02rem;
+    }
+
+    .highlight-box {
+      background: #ede7df;
+      border-radius: 20px;
+      padding: 22px 26px;
+      border: 1px solid #cdbfb0;
+      margin-top: 25px;
+    }
+
+    /* ----- image banner (real photo to keep visual interest) ----- */
+    .visual-banner {
+      margin: 40px 0 30px;
+      border-radius: 40px;
+      overflow: hidden;
+      max-height: 280px;
+      box-shadow: 14px 14px 0 #c9bbab;
+    }
+    .visual-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ----- footer (same menu) ----- */
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 0 45px 0;
+      border-top: 1px solid #d2c7ba;
+      margin-top: 40px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 42px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #342e27;
+      font-size: 1rem;
+      border-bottom: 1px dotted #a79888;
+    }
+    .footer-links a:hover { border-bottom: 1px solid #342e27; }
+    .footer-copy {
+      color: #6b6054;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 800px) {
+      .disclaimer-grid { grid-template-columns: 1fr; }
+      .disclaimer-card.full-width { grid-column: span 1; }
+      .page-header h1 { font-size: 3rem; }
+    }
+    @media (max-width: 650px) {
+      .site-wrapper { padding: 0 20px; }
+      .navbar { flex-direction: column; align-items: start; }
+      .nav-links { margin-left: 0; flex-wrap: wrap; gap: 24px; }
+      .footer { flex-direction: column-reverse; align-items: start; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Navbar: Home, About, Disclaimer (active), Privacy, Terms -->
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">Bilinova</a>
+        <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page title -->
+    <div class="page-header">
+      <h1>disclaimer</h1>
+      <div class="sub">read carefully — your use of this site is subject to the following</div>
+    </div>
+
+    <!-- real image banner to keep Bilinova visual language -->
+    <div class="visual-banner">
+      <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&auto=format&fit=crop&q=85" alt="neutral toned fabric and legal subtle vibe" loading="lazy">
+    </div>
+
+    <!-- Main disclaimer content (grid) -->
+    <div class="disclaimer-grid">
+      <!-- Card 1: general disclaimer -->
+      <div class="disclaimer-card">
+        <h2><span>⸻</span> general</h2>
+        <p>The information provided by Bilinova on this website is for general informational purposes only. All information is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information.</p>
+        <div class="highlight-box">
+          <strong>📌 summary:</strong> site content may contain errors; use at your own discretion.
+        </div>
+      </div>
+
+      <!-- Card 2: professional disclaimer -->
+      <div class="disclaimer-card">
+        <h2><span>⸻</span> professional</h2>
+        <p>Bilinova does not provide fashion advice, styling counsel, or any professional services. Any decisions you make based on content found on this site are your sole responsibility. We are not liable for any losses or damages incurred from wearing, modifying, or laundering any garments featured.</p>
+        <p style="margin-top: 20px;"><em>⚡ all size guides are approximate.</em></p>
+      </div>
+
+      <!-- Card 3: external links (full width maybe, but keep two-col? we put full width below) -->
+      <div class="disclaimer-card full-width">
+        <h2><span>⸻</span> external links & product images</h2>
+        <p>This website may contain links to external websites (such as unsplash for imagery or reference). We do not endorse or take responsibility for the content, privacy policies, or practices of any third-party sites. Product images are real and sourced from Unsplash under free license; they do not imply endorsement by the original photographers. Garments shown may not be available for sale.</p>
+        <ul>
+          <li>📸 All photographs are used for demonstration — Bilinova does not claim ownership of branded items.</li>
+          <li>🔗 Linked shops are independent; we are not responsible for their transactions.</li>
+        </ul>
+      </div>
+
+      <!-- Card 4: affiliate / advertising disclaimer (even if not applicable, clear) -->
+      <div class="disclaimer-card">
+        <h2><span>⸻</span> affiliate</h2>
+        <p>Bilinova does not participate in affiliate marketing. We do not receive commissions from links or recommendations. Any future partnerships will be clearly disclosed.</p>
+        <p style="margin-top: 15px;">This disclaimer was last updated 28 February 2026.</p>
+      </div>
+
+      <!-- Card 5: errors / omissions -->
+      <div class="disclaimer-card">
+        <h2><span>⸻</span> errors & omissions</h2>
+        <p>While we strive to keep product descriptions and pricing accurate, unintentional errors may occur. We reserve the right to correct any inaccuracies and change or update information at any time without prior notice.</p>
+      </div>
+
+      <!-- Card 6: Fair use / inspiration (full width) -->
+      <div class="disclaimer-card full-width">
+        <h2><span>⸻</span> fair use & inspiration</h2>
+        <p>Bilinova uses real fashion photography purely for artistic and demonstration purposes. All images are credited to their respective authors (via Unsplash). If you are a photographer and wish for your work to be removed, please contact us, and we will honour the request immediately.</p>
+        <div style="background: #ded3c6; border-radius: 40px; padding: 15px 25px; margin-top: 15px;">
+          ⚖️ this site is a concept / demo — no commercial gain is sought from third-party images.
+        </div>
+      </div>
+    </div>
+
+    <!-- subtle spacer with real texture -->
+    <div style="height: 2px; background: linear-gradient(90deg, #cdc0b2, transparent); margin: 20px 0;"></div>
+
+    <!-- Footer with exactly home, about, disclaimer, privacy, terms -->
+    <footer class="footer">
+      <div class="footer-links">
+    <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-copy">
+        © Bilinova — liability information
+      </div>
+    </footer>
+  </div>
+  <!-- real image used: unsplash / industrial fabric -->
+</body>
+</html>
